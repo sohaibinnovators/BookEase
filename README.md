@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BookEase
 
-## Getting Started
+BookEase is a premium **frontend booking and appointment demo** built with Next.js. It showcases service discovery, provider profiles, availability-aware scheduling, customer/provider dashboards, reviews, favorites, notifications, and analytics — all persisted in the browser with **localStorage** (no backend).
 
-First, run the development server:
+> Demonstration product only. Bookings, reviews, provider accounts, earnings, and analytics are demo data stored locally in your browser. There is no real authentication, payments, email/SMS, or multi-user sync.
+
+## Main features
+
+- Service & provider discovery with search, filters, sorting, and detail pages
+- Multi-step booking wizard with calendar + time slots
+- Availability rules: working hours, breaks, unavailable dates, conflict prevention
+- Shared booking store for customer and provider dashboards
+- Cancellation, rescheduling, booking timeline, and references
+- Customer favorites, recently viewed services, and reviews/ratings
+- In-app notification center (local only)
+- Provider service CRUD, availability management, earnings & analytics
+- Responsive UI with the BookEase indigo/teal design system
+
+## Technology stack
+
+- **Next.js 16** (App Router, Cache Components)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS 4**
+- Browser **localStorage** for demo persistence
+
+## Getting started
+
+### Requirements
+
+- Node.js 20+ recommended
+- npm (or compatible package manager)
+
+### Install
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+### Lint
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+```
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push this repository to GitHub/GitLab/Bitbucket.
+2. Import the project in [Vercel](https://vercel.com/new).
+3. Use the default Next.js settings (build: `next build`, output detected automatically).
+4. Deploy — **no environment variables are required** for this demo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+localStorage data lives in each visitor’s browser, so deployed demos do not share bookings across users or devices.
+
+## Demo limitations
+
+- No backend, database, or real multi-user sync
+- No real authentication (login/signup are UI demos)
+- No payment gateway or payouts
+- No email, SMS, or push notifications
+- No external calendar APIs
+- Customer/provider dashboards are demonstration workspaces, not secured accounts
+- Reset demo data from **Customer dashboard → Settings → Reset demo localStorage**
+
+## Project structure (high level)
+
+- `app/` — routes (marketing, customer dashboard, provider dashboard)
+- `components/` — UI, booking, dashboards, cards
+- `hooks/` — hydration-safe localStorage subscriptions
+- `lib/` — availability, booking/catalog/profile/review stores, discovery, analytics
+
+## Scripts
+
+| Command        | Description              |
+| -------------- | ------------------------ |
+| `npm run dev`  | Start development server |
+| `npm run build`| Production build         |
+| `npm start`    | Serve production build   |
+| `npm run lint` | Run ESLint               |
